@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<title>Angular HW</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+	<script type="text/javascript" src="angular.hw.js"></script>
+</head>
+<body ng-controller='myController'>
+
+<table border=1>
+	<thead>
+		<th>Country Name</th>
+		<th>Country Population</th>
+		<th>Country President</th>
+		<th>Country Flag Colors</th>
+	</thead>
+		<tr ng-repeat="country in countries">
+			<td>{{country.name}}</td>
+			<td>{{country.population}}</td>
+			<td>{{country.president}}</td>
+			<td><img ng-src='{{country.src}}'></td>
+		</tr>
+	</table>
+
+	<form ng-submit="addCountry()">
+		<input type="text" ng-model="newCountry">
+		<input type="text" ng-model="newPopulation">
+		<input type="text" ng-model="newPresident">
+		<input type="text" ng-model="newFlag">
+		<input type="submit" value="add">
+	</form>
+
+
+</body>
+</html>

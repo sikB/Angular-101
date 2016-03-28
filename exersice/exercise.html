@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<title>Angular 101</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+		<script type="text/javascript" src="angular101.js"></script>
+</head>
+<body ng-controller='myController'>
+
+<!-- Hello, {{first}} {{last}} --><!-- 
+<div id="student-list">
+	<li ng-repeat='city in cities track by $index'>
+		{{city.name}} - {{city.population}}
+	</li>
+
+	<form ng-submit="addStudent()">
+		<input type="text" ng-model="newStudent">
+		<input type="submit" value="addStudent">
+	</form>
+	</div> -->
+	
+	<table border=1>
+	<thead>
+		<th>City Name</th>
+		<th>City Population</th>
+	</thead>
+		<tr ng-repeat="city in cities">
+			<td>{{city.name}}</td>
+			<td>{{city.population}}</td>
+		</tr>
+	</table>
+
+	
+
+
+
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script> -->
+</body>
+</html>
+
+
+<!-- Hello, <sapn id="inputText">world</sapn>! -->
+<!-- 	<label>Name:</label><input type="text" ng-model="name">
+	<label>Name 2:</label><input type="text" ng-model="name">
+	<label>Name 3:</label><input type="text" ng-model="name"> -->
+<!-- 	
+		Please Fill Out Your: {{first}} {{last}} {{address}} {{city}} {{state}} {{zip}}
+			<label>First Name:</label><input type="text" ng-model='first'>
+			<label>Last Name:</label><input type="text" ng-model='last'>
+			<label>Address:</label><input type="text" ng-model='address'>
+			<label>City:</label><input type="text" ng-model='city'>
+			<label>State:</label><input type="text" ng-model='state'>
+			<label>Zip:</label><input type="text" ng-model='zip'>
+	<div id="angular">	
+	</div> -->
