@@ -2,19 +2,24 @@
 <html ng-app="myApp">
 <head>
 	<title>Angular HW</title>
+	<style>
+	img{max-width: 50px;}
+	</style>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
 	<script type="text/javascript" src="angular.hw.js"></script>
 </head>
 <body ng-controller='myController'>
 
+<input type="text" ng-model='sortInput'>
+
 <table border=1>
 	<thead>
-		<th>Country Name</th>
+		<th><a href='' ng-click='sortField = "name"; reverse = !reverse'>Country Name</a></th>
 		<th>Country Population</th>
-		<th>Country President</th>
+		<th><a href='' ng-click='sortField = "president"; reverse = !reverse'>Country President</a></th>
 		<th>Country Flag Colors</th>
 	</thead>
-		<tr ng-repeat="country in countries track by $index">
+		<tr ng-repeat="country in countries | filter:sortInput | orderBy:sortField:reverse">
 			<td><a href="" ng-click='removeCountry($index)'>{{country.name}}</a></td>
 			<td>{{country.population}}</td>
 			<td>{{country.president}}</td>

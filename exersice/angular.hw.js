@@ -1,6 +1,15 @@
 var myApp = angular.module('myApp', []);
-myApp.controller('myController', function($scope){
+myApp.controller('myController', function($scope, $http){
 	// console.log($scope);
+
+var movieURL = 'https://api.themoviedb.org/3/search/movie?api_key=48bf4a3fe9092e9030ced03151c835c4&query=superman';
+
+// can get local files to link to with few exceptions. 
+	$http.get(movieURL).success(function(data){
+		console.log(data);
+	// 	$scope.countries = dataWeGotBack;
+	// });
+
 	$scope.countries = [
 	{
 		name: 'America',
@@ -77,6 +86,7 @@ myApp.controller('myController', function($scope){
 		$scope.newFlag = '';
 	}
 	$scope.removeCountry = function(i){
+		$scope.message = $scope.countries[i].name + ' was removed';
 		$scope.countries.splice(i,1);
 	}
 });
