@@ -15,7 +15,7 @@
 		<th>Country Flag Colors</th>
 	</thead>
 		<tr ng-repeat="country in countries track by $index">
-			<td>{{country.name}}</td>
+			<td><a href="" ng-click='removeCountry($index)'>{{country.name}}</a></td>
 			<td>{{country.population}}</td>
 			<td>{{country.president}}</td>
 			<td><img ng-src='{{country.src}}'></td>

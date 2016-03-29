@@ -76,4 +76,7 @@ myApp.controller('myController', function($scope){
 		$scope.newPresident = '';
 		$scope.newFlag = '';
 	}
+	$scope.removeCountry = function(i){
+		$scope.countries.splice(i,1);
+	}
 });
