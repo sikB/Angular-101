@@ -1,63 +1,64 @@
 var myApp = angular.module('myApp', []);
 myApp.controller('myController', function($scope){
+	// console.log($scope);
 	$scope.countries = [
 	{
 		name: 'America',
-		population: 318900000,
+		population: '318,900,000',
 		president: 'Obama',
 		src: 'amerflag.png'
 	},
 	{
 		name: 'Canada',
-		population: 35160000,
+		population: '35,160,000',
 		president: 'Trudeau',
 		src: 'canadia.png'
 	},
 	{
 		name: 'Brazil',
-		population: 200400000,
+		population: '200,400,000',
 		president: 'Rousseff',
 		src: 'brazil.png'
 	},
 	{
 		name: 'Japan',
-		population: 127300000,
+		population: '127,300,000',
 		president: 'Abe',
 		src: 'jap.png'
 	},
 		{
 		name: 'China',
-		population: 1357300000,
+		population: '1,357,300,000',
 		president: 'Jinping',
 		src: 'china.png'
 	},
 		{
 		name: 'Korea',
-		population: 50220000,
+		population: '50,220,000',
 		president: 'Geun-hye',
 		src: 'korea.png'
 	},
 		{
 		name: 'Russia',
-		population: 143500000,
+		population: '143,500,000',
 		president: 'Putin',
 		src: 'ruski.png'
 	},
 		{
 		name: 'Australia',
-		population: 23130000,
+		population: '23,130,000',
 		president: 'Abbott',
 		src: 'australia.png'
 	},
 		{
 		name: 'Ireland',
-		population: 4595000,
+		population: '4,595,000',
 		president: 'Higgins',
 		src: 'irish.png'
 	},
 		{
 		name: 'Germany',
-		population: 80620000,
+		population: '80,620,000',
 		president: 'Gauck',
 		src: 'german.png'
 	}
@@ -68,7 +69,7 @@ myApp.controller('myController', function($scope){
 			name: $scope.newCountry, 
 			population: $scope.newPopulation, 
 			president: $scope.newPresident, 
-			src: ''
+			src: $scope.newFlag
 		});
 		$scope.newCountry = '';
 		$scope.newPopulation = '';
