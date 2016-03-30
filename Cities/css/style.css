@@ -1,0 +1,23 @@
+/* line 6, ../Compass/sass/style.scss */
+#map {
+  height: 100vh;
+  width: 75%;
+  float: left;
+}
+
+/* line 11, ../Compass/sass/style.scss */
+#map-panel {
+  height: 100vh;
+  width: 25%;
+  float: left;
+}
+/* line 15, ../Compass/sass/style.scss */
+#map-panel .blue-button {
+  display: inline-block;
+  text-decoration: none;
+  background-color: #4099ff;
+  color: white;
+  border-radius: 10px;
+  width: auto;
+  padding: 5px 10px;
+}
