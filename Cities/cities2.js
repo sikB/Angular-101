@@ -117,6 +117,6 @@ var placesID = [
 "restaurant",
 "school",
 "subway_station",
-"srain_station",
+"train_station",
 "university"
 ];

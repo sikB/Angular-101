@@ -21,3 +21,10 @@
   width: auto;
   padding: 5px 10px;
 }
+
+/* line 25, ../Compass/sass/style.scss */
+.searchPlaces {
+  position: absolute;
+  top: 10%;
+  right: 5%;
+}

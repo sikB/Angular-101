@@ -43,26 +43,46 @@ mapsApp.controller('mapsController', function($scope){
         });
       $scope.markers.push(marker);
     }
+     $scope.searchPlaces = function(){
+        var service = new google.maps.places.PlacesService($scope.map);
+        service.nearbySearch({
+          location: $scope.map.getCenter(),
+          radius: 50000,
+          type: $scope.newTitle
+        }, callback);
+        $scope.map = new google.maps.Map(document.getElementById('map'),{
+          location: $scope.map.getCenter(),
+          radius: 50000
+        });
+
+        
+      function callback(results, status) {
+        if (status === google.maps.places.PlacesServiceStatus.OK) {
+          for (var i = 0; i < results.length; i++) {
+            createMarker2(results[i]);
+          }
+        }
+      }
+     }
+
       zoomCity = function(lat, lon){
         var center = new google.maps.LatLng(lat, lon);
         $scope.map = new google.maps.Map(document.getElementById('map'), {
         center: center,
-        zoom: 13
+        zoom: 12
         });
         for(i=0; i<cities.length; i++){
         createMarker(cities[i]);
         } 
-         
+
         var service = new google.maps.places.PlacesService($scope.map);
         service.nearbySearch({
           location: center,
           radius: 50000,
-          type: places
+          type: $scope.newTitle
         }, callback);
 
-            console.log(places);
-
-          
+        
       function callback(results, status) {
         if (status === google.maps.places.PlacesServiceStatus.OK) {
           for (var i = 0; i < results.length; i++) {
@@ -70,13 +90,10 @@ mapsApp.controller('mapsController', function($scope){
             // console.log(places);
           }
         }
-      }
-    }  
-
+  }
+}
      function createMarker2(place) {
-        var placeLoc = place.geometry.location;
         var marker = new google.maps.Marker({
-          position: placeLoc,
           map: $scope.map,
           title: place.city,
           animation: google.maps.Animation.DROP

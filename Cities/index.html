@@ -25,13 +25,18 @@
     </ol>
 </div>
 
- <div id="places-option" class="hidden">
+<!--  <div id="places-option" class="hidden">
     <div class="places-selected" ng-repeat="place in places">
       <input class="" type="checkbox" ng-model="item.checked">
       <button class="blue-three-button">{{place}}</button>
       <span ng-show="item.checked" >Selected</span>
     </div>
 </div>
+ -->
+<form ng-submit='searchPlaces()' class="searchPlaces">
+  <input type="text" ng-model='newTitle'>
+  <input type="submit" value="add"><br>Search Places
+</form>
 
   <div id="places-option"></div>
 
