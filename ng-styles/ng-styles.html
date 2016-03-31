@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html ng-app="angularStyle">
+<head>
+	<title>Angular Practice With Style</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+	<script type="text/javascript" src="controller.js"></script>
+
+</head>
+<body ng-controller='styleController'>
+
+	<div id="wrapper" ng-style='{color: myColor}'>
+		
+		<div id="header">
+			<h1>Consider the Following...</h1>
+		</div>
+
+		<div class="item" ng-repeat="item in items">
+			Name: {{item.name}} - {{item.former}}
+			<input type="checkbox" ng-model="item.checked">
+			<span ng-show="item.checked" ng-class="{'accepted' : understandYes}">Checked</span>
+			<!-- {{item.checked}} -->
+		</div>
+		
+		<div class="color-input">
+			<input type="text" ng-model="myColor" placeholder="Enter a Color">
+		</div>
+
+		<div class="iundertand">
+			<div class="item">
+				I understand the consequences!<input type="checkbox" ng-model='understand'>
+			</div>
+
+			<div class="item" ng-hide='understand'>
+			By checking the box, you accept full responsibility for all marked checkboxes
+			</div>
+			<div class="item" ng-hide='myColor == "red"'>
+				I will hide if the color is set to red!
+			</div>
+
+		</div>
+		<button ng-click="understand()">I understand</button>
+	</div>
+
+	
+</body>
+</html>
