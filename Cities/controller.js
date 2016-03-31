@@ -1,6 +1,9 @@
 var mapsApp=angular.module('mapsApp', []);
 mapsApp.controller('mapsController', function($scope){
 	 
+        $scope.placesID = placesID;
+        $scope.cities = cities;
+        $scope.places = places;
         $scope.markers = [];
         $scope.map = new google.maps.Map(document.getElementById('map'), {
           zoom: 5,
@@ -31,7 +34,7 @@ mapsApp.controller('mapsController', function($scope){
             '<div class="landArea">'+'Land Area: ' + city.landArea +'</div>' +
             '<div class="latLon">'+'Latitude: ' + lat + ' Longitude:' + lon + '</div>' + 
             '<div><a href="#" onclick="zoomCity('+lat+','+lon+')">Zoom to City</a></div>' +
-            '<div><a href="#" onclick="directionsClick('+lat+','+lon+')">Get Directions</a></div>' + 
+            '<div><a href="#" onclick="directionsClick('+lat+','+lon+')">Get Directions</a></div>' +  
             '</div>';   
 
         marker.addListener('click', function() {
@@ -41,21 +44,59 @@ mapsApp.controller('mapsController', function($scope){
       $scope.markers.push(marker);
     }
       zoomCity = function(lat, lon){
+        var center = new google.maps.LatLng(lat, lon);
         $scope.map = new google.maps.Map(document.getElementById('map'), {
-        center: new google.maps.LatLng(lat, lon),
+        center: center,
         zoom: 13
         });
         for(i=0; i<cities.length; i++){
         createMarker(cities[i]);
-        }       
+        } 
+         
+        var service = new google.maps.places.PlacesService($scope.map);
+        service.nearbySearch({
+          location: center,
+          radius: 50000,
+          type: places
+        }, callback);
+
+            console.log(places);
+
+          
+      function callback(results, status) {
+        if (status === google.maps.places.PlacesServiceStatus.OK) {
+          for (var i = 0; i < results.length; i++) {
+            createMarker2(results[i]);
+            // console.log(places);
+          }
+        }
       }
+    }  
+
+     function createMarker2(place) {
+        var placeLoc = place.geometry.location;
+        var marker = new google.maps.Marker({
+          position: placeLoc,
+          map: $scope.map,
+          title: place.city,
+          animation: google.maps.Animation.DROP
+        });
+        
+        console.log(place);
+
+
+
+        google.maps.event.addListener(marker, 'click', function() {
+          infowindow.setContent(place.name);
+          infowindow.open($scope.map, this);
+        });
+      }    
 
     $scope.cityClick = function(i){
       google.maps.event.trigger($scope.markers[i], 'click');
     }
 
     directionsClick = function(lat, lon){
-      console.log('hi');
       var directionsService = new google.maps.DirectionsService();
       var directionsDisplay = new google.maps.DirectionsRenderer();
       var map = new google.maps.Map(document.getElementById('map'),{
@@ -82,7 +123,7 @@ mapsApp.controller('mapsController', function($scope){
 
 }
 
-    $scope.cities = cities;
+    // $scope.cities = cities;
 
 	for(i=0; i<cities.length; i++){
 		createMarker(cities[i]);

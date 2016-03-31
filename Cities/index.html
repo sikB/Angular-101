@@ -4,8 +4,9 @@
 	<title>Cities</title>
   <link rel="stylesheet" type="text/css" href="css/style.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFKiFEGeuqRKFi_JjCjpY4WQohQK49Z7E">
-    </script>
+    <script type="text/javascript"
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFKiFEGeuqRKFi_JjCjpY4WQohQK49Z7E&libraries=geometry,places">
+</script>
   <script type="text/javascript" src="cities2.js"></script>
   <script type="text/javascript" src="controller.js"></script>
 	<!--  <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
@@ -24,7 +25,15 @@
     </ol>
 </div>
 
-  <div id="panel-map"></div>
+ <div id="places-option" class="hidden">
+    <div class="places-selected" ng-repeat="place in places">
+      <input class="" type="checkbox" ng-model="item.checked">
+      <button class="blue-three-button">{{place}}</button>
+      <span ng-show="item.checked" >Selected</span>
+    </div>
+</div>
+
+  <div id="places-option"></div>
 
 </body>
 </html>
