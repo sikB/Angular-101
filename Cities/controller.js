@@ -15,8 +15,7 @@ mapsApp.controller('mapsController', function($scope){
     	var latLon = city.latLon.split(',');
     	var lat = latLon[0];
     	var lon = latLon[1];
-
-        var marker = new google.maps.Marker({
+      var marker = new google.maps.Marker({
           position: new google.maps.LatLng(lat, lon),
           map: $scope.map,
           title: city.city,
@@ -50,12 +49,11 @@ mapsApp.controller('mapsController', function($scope){
           radius: 50000,
           type: $scope.newTitle
         }, callback);
-        $scope.map = new google.maps.Map(document.getElementById('map'),{
-          location: $scope.map.getCenter(),
-          radius: 50000
-        });
+        // $scope.map = new google.maps.Map(document.getElementById('map'),{
+        //   location: $scope.map.getCenter(),
+        //   radius: 50000
+        // });
 
-        
       function callback(results, status) {
         if (status === google.maps.places.PlacesServiceStatus.OK) {
           for (var i = 0; i < results.length; i++) {
@@ -93,9 +91,11 @@ mapsApp.controller('mapsController', function($scope){
   }
 }
      function createMarker2(place) {
-        var marker = new google.maps.Marker({
+       var placeLoc = place.geometry.location;
+       var marker = new google.maps.Marker({
           map: $scope.map,
           title: place.city,
+          position: place.geometry.location,
           animation: google.maps.Animation.DROP
         });
         
